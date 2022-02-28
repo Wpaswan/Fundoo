@@ -1,0 +1,78 @@
+<div class="container" fxLayoutAlign="center center"> 
+ 
+  <div class="register" >
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()"></form>
+      <div class="image">
+          <img src="https://ssl.gstatic.com/accounts/signup/glif/account.svg"  >
+          
+          <p>One account. All of Fundoo Notes working for you.</p>
+      </div>
+    <div >
+      <h1 class="header">
+        <span style='color: #1a73e8;'>F</span>
+        <span style='color:hsl(0, 100%, 50%);'>u</span>
+        <span style='color:hsl(120, 100%, 25%)'>n</span>
+        <span style='color:#1a73e8;'>d</span>
+        <span style='color:yellow;'>o</span>
+        <span style='color:hsl(0, 100%, 50%);'>o</span>
+      </h1>
+      <p class="SubHeader" >Create your Account</p>
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+     
+     
+      <mat-form-field class="full-width-name" appearance="outline" >
+        <mat-label>First name</mat-label>
+        <input matInput formControlName='firstName' placeholder="Placeholder">
+            <mat-error>First name is necessory</mat-error>
+          </mat-form-field>
+      <mat-form-field class="full-width-name" appearance="outline">
+        <mat-label>Last name</mat-label>
+        <input matInput formControlName='lastName' placeholder="Placeholder">
+            <mat-error>Last name is necessory</mat-error>
+          </mat-form-field>
+    </div>
+      
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <mat-form-field class="full-width-email" appearance="outline">
+        <mat-label>Enter Email</mat-label>
+        <input matInput formControlName='email' placeholder="username@gmail.com">
+            <mat-error>emailid is necessory</mat-error>
+          </mat-form-field>    
+    </div>
+        
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+      <mat-form-field class="full-width-password" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName='Password' placeholder="Placeholder">
+            <mat-error>password is necessory</mat-error>
+
+           
+      </mat-form-field>
+
+      <mat-form-field class="full-width-password" appearance="outline">
+        <mat-label>Confirm</mat-label>
+        <input matInput formControlName='confirmPassword' placeholder="Placeholder">
+        <mat-error>confirm password is necessory</mat-error>
+
+          </mat-form-field>
+    </div>
+    <div class="hint">
+      <mat-hint align="start">Use 8 or more character with a mix of letters,numbers &<br> symbols</mat-hint>           
+
+    </div>
+        <div>
+          <mat-checkbox class="checkbox1">Show Password</mat-checkbox>
+        </div>
+        <div class="ButtonCss">
+          <button class="createAccountButton" routerLink='/login'>Sign in instead</button>
+          
+         <button class="next" mat-raised-button color="Primary">Next</button>
+        
+        </div> 
+    </form>
+  </div> 
+ 
+        
+</div>

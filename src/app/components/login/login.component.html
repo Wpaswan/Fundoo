@@ -1,0 +1,49 @@
+<div fxflex="100" fxLayout="row" fxLayoutAlign="center center" fxFlexFill >
+    <mat-card>       
+        <div>
+            <h1 class="header" >
+            <span style='color:#1a73e8;'>F</span>
+            <span style='color:rgba(255, 0, 0, 0.829);'>u</span>
+            <span style='color:yellow'>n</span>
+            <span style='color:#1a73e8;'>d</span>
+            <span style='color:green;'>o</span>
+            <span style='color:rgba(255, 0, 0, 0.822);'>o</span>
+            </h1>
+            <p class="SubHeader">Sign In</p>
+        </div>
+        <div class="txtfield">
+            <p>to continue to Fundoo</p>
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+        <div fxLayout="column" fxLayoutAlign="space-between center">
+            <div class="form1">
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Enter Email</mat-label>
+                  <input matInput formControlName="email" placeholder="">
+                  <mat-error>Invalid Email</mat-error>                  
+                </mat-form-field>
+            </div>            
+            <div class="form2">
+                <mat-form-field class="full-width1" appearance="outline">
+                  <mat-label>Enter your Password</mat-label>
+                  <input matInput formControlName="password" placeholder="" type="password">
+                  <mat-error>Invalid Password</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="Forgot">
+            <a class="link" routerLink='/forget-password' href="">Forgot Password?</a>
+        </div>       
+        <div class="checkbox1">
+            <mat-checkbox>Show Password</mat-checkbox>           
+        </div>
+        <div class="button-row">
+            
+            <a class="link" routerLink='/signup' mat-button href="">Create Account</a>
+              
+            <button class="signin" mat-raised-button color="primary">Log In</button>
+        </div>
+    </form>
+          
+    </mat-card>         
+    </div>
