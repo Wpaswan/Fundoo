@@ -1,22 +1,27 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
+  BaseUrl=environment.BaseUrl
 
-  constructor() { }
-  postService()
+  constructor(private  Http:HttpClient) { }
+  postService(url: string, req: any, token: boolean= false, httpOptions: any={} )
   {
+    console.log(req)
+   return this.Http.post(this.BaseUrl+url,req,token &&httpOptions)
 
   }
   getService()
   {
 
   }
-  putService()
-  {
-
+  putService(){
+    
   }
   
   deleteService()

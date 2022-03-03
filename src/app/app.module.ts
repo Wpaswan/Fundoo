@@ -16,6 +16,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar'; 
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import { TakenoteComponent } from './components/takenote/takenote.component';
+import { NoteiconsComponent } from './components/noteicons/noteicons.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { DisplaynoteComponent } from './components/displaynote/displaynote.component';
+import { GetAllNotesComponent } from './components/get-all-notes/get-all-notes.component';
 
 
 
@@ -28,6 +39,11 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     SignupComponent,
     ForgetPasswordComponent,
     ResetPasswordComponent,
+    DashboardComponent,
+    TakenoteComponent,
+    NoteiconsComponent,
+    DisplaynoteComponent,
+    GetAllNotesComponent,
     
     
     
@@ -46,6 +62,16 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     ReactiveFormsModule,
     FlexLayoutModule,
     FormsModule,
+    HttpClientModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    // NoteiconsComponent,
+    MatButtonModule,
+    
+    MatMenuModule
+    
     
     
   ],

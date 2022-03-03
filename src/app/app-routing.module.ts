@@ -4,12 +4,14 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   {path:'login' , component:LoginComponent},
   {path:'signup' , component:SignupComponent},
   {path:'forget-password',component:ForgetPasswordComponent},
-  {path:'reset-password',component:ResetPasswordComponent}
+  {path:'resetpassword/:token',component:ResetPasswordComponent},
+  {path:'dashboard',component:DashboardComponent}
 
 ];
 

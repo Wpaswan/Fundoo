@@ -1,0 +1,73 @@
+<div class="dashboard-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar class="toolbar">
+    
+
+    <button mat-icon-button (click)="sidenav.toggle();">
+      <mat-icon>menu</mat-icon>
+    </button>
+    
+    <h1 class="app-name"> Fundoo</h1>
+    
+    <div class="image">
+      <img src="../../../assets/Images/Google_Keep_icon_(2020).svg"alt=""style="height: 40px;width: 33px;padding-left: 5px ;margin-left:-30px">
+    </div>
+   
+    <div class="topnav">
+     
+      <input type="text" placeholder="Search"style="padding-top: 13px; padding-bottom: 15px;padding-right: 398px;padding-left: 69px;border-radius: 10px;border: 1px solid rgb(199, 196, 196);  font-size: 17px;">
+    </div>
+    <img src="../../../assets/Images/search_black_24dp.svg" style="opacity: 0.6;height: 28px;margin-left: -659px; ">
+    <div class="imagefirst">
+      <img src="../../../assets/Images/refresh_black_24dp (1).svg" alt=""style=" width:33px;">
+    </div>
+    <div class="imageSecond">
+      <img src="../../../assets/Images/view_list_black_24dp.svg" alt=""style="width:33px;">
+    </div>
+    <div class="imagethird">
+      <img src="../../../assets/Images/settings_black_24dp.svg" alt=""style="width:33px;">
+    </div>
+    <div class="imagefourth">
+      <img src="../../../assets/Images/account_circle_black_24dp.svg" alt=""style="width:33px;margin-left:65px;padding-top:15px;">
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 100">
+  
+    <mat-sidenav #sidenav mode="side" id="sidenav" [class.menu-open]="isMenuOpen" [class.menu-close]="!isMenuOpen" opened style="width: 240px;background-color: transparent;" mode="side" [opened]="true">
+      <div class="menu-container">
+      <mat-nav-list>
+        
+         
+        
+        <a mat-list-item routerLink="dashboard/Notes">Notes</a>
+        
+        <a mat-list-item routerLink="dashboard/Reminders">Reminders</a>
+        <a mat-list-item routerLink="dashboard/Edit labels">Edit labels</a>
+        <a mat-list-item routerLink="dashboard/Archive">Archive</a>
+        <button mat-button id="sidenav-button"> <a mat-list-item routerLink="dashboard/Trash">Trash</a></button>
+      </mat-nav-list>
+    </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      
+      <div class="note">
+      <img src="../../../assets/Images/lightbulb_black_24dp.svg"style="height:30px; opacity: 0.6;margin-top: 21px;">
+      </div>
+      <div class="reminder">
+      <img src="../../../assets/Images/notifications_black_24dp.svg"style="height:30px;opacity: 0.6;">
+      </div>
+      <p>
+      <img src="../../../assets/Images/mode_edit_outline_black_24dp.svg"style="height:30px;opacity: 0.6;">
+    </p>
+    <p>
+      <img src="../../../assets/Images/archive_black_24dp.svg"style="height:30px;opacity: 0.6;">
+    </p>
+      <img src="../../../assets/Images/delete_outline_black_24dp.svg"style="height:30px;opacity: 0.6;">
+      <app-takenote></app-takenote>
+      <router-outlet></router-outlet>
+      
+    </mat-sidenav-content>
+    
+  </mat-sidenav-container>
+</div>

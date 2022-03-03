@@ -1,0 +1,69 @@
+.border {
+    border: 5px solid transparent;
+    height: 20px;
+    width: 50%;
+    top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+  }
+  button{
+      margin: 14px;
+      width: 20px;
+      border:none;
+      background-color: transparent;
+      //background: #fff;
+  }
+//   .coll{
+//       height: 50px;
+//       width: 50px;
+//   }
+  .ic{
+      padding-right: 25px;
+      opacity: 0.6;
+  }
+  .card{
+    background-color: #fff;
+    width:200px;
+    height: 160px;
+    border-radius: 4px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+   
+  }
+  .coll{
+    display: grid;
+    margin-right: -3px;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+  }
+  .color-box {
+      width: 800px;
+      display: flex;
+      flex-wrap: wrap;
+   
+}
+mat-icon{
+  opacity: 0.6;
+  cursor: pointer;
+}
+mat-icon:hover{
+  opacity: 0.9;
+}
+
+.matMenu{
+  height: 10px;
+  margin-top: 15px;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -2,11 +2,12 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-import { HttpService } from "src/app/services/http/http.service";
+
 
 export const environment = {
   production: false,
-  BaseUrl:'Http://localhost:44307/'
+  BaseUrl:'http://fundoonotes.incubation.bridgelabz.com/api/'    
+  // BaseUrl:'https://localhost:44307/'                                   
 };
 
 /*

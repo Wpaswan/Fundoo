@@ -1,0 +1,16 @@
+<!-- <div class="main" style=" margin-left: 194px;"> -->
+    <!-- //furtheruncomment
+     <div class="notes"  *ngFor="let note of noteList"> 
+        <mat-card class="example-card">
+        <button class="pinbutton">
+            <img class="pin" src="../../../assets/Images/push_pin_black_24dp.svg" alt="" style="margin-left:250px;opacity:0.6;">
+          </button>
+    <div class="notes" fxLayout="row" fxLayoutAlign="center center"fxLayoutGap="25px"*ngFor="let note of noteList">
+         <div style="font-size: 18px;padding-top: 15px;padding-left: 15px;font-weight: 500;"> <mat-card-title (click)="openDialog(note)">{{note.title}}</mat-card-title></div>
+        <div style="font-size: 18px;padding-top: 15px;padding-left: 15px;"> <mat-card-subtitle (click)="openDialog(note)">{{note.message}}</mat-card-subtitle></div> 
+        <mat-card-content>
+    <app-noteicons [CardObject]="note" ></app-noteicons>
+        </mat-card-content>
+    </mat-card>
+    </div>
+    </div> -->

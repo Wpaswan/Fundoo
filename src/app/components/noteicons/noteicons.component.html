@@ -1,0 +1,36 @@
+<div class="border">
+    <div class="cl">
+        <button mat-icon-button>
+            <mat-icon>add_alert</mat-icon>
+        </button>
+    </div>
+    <div class="cl">
+        <button mat-icon-button>
+            <mat-icon>person_add</mat-icon>
+        </button>
+    </div>
+    <div class="cl">
+        <button mat-icon-button>
+            <mat-icon>color_lens</mat-icon>
+        </button>
+    </div>
+    <div class="cl">
+        <button mat-icon-button>
+            <mat-icon>image</mat-icon>
+        </button>
+    </div>
+    <div class="cl">
+        <button mat-icon-button (click)="archiveNote()">
+            <mat-icon>archive</mat-icon>
+        </button>
+    </div>
+    <div class="cl">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="trashNotes()">Delete note</button>
+        </mat-menu>
+    </div>
+    
+</div>
