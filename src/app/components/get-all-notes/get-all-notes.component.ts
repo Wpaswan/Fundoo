@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NotesService } from 'src/app/services/notes.service';
+import { NotesService } from 'src/app/services/notes/notes.service';
 
 @Component({
   selector: 'app-get-all-notes',
@@ -7,9 +7,9 @@ import { NotesService } from 'src/app/services/notes.service';
   styleUrls: ['./get-all-notes.component.scss']
 })
 export class GetAllNotesComponent implements OnInit {
-
-  Title:any;
-  Message:any;
+  token:any;
+  title:any;
+  description:any;
   notes:any;
   constructor(private NotesService:NotesService) { }
 
@@ -19,12 +19,16 @@ export class GetAllNotesComponent implements OnInit {
   }
   getAllNotes() {
   
-    // this. NotesService.getAllNotes().subscribe((res:any)=>{
+    this. NotesService.getAllNotes().subscribe((res:any)=>{
       
-    //   console.log(res);
-    //  this.notes=res
+      console.log(res);
+     this.notes=res.data.data
+     console.log(this.notes)
      
-    // })
+    })
+  
+  
+   
   }
   //use filter method here
   filterTrash(){

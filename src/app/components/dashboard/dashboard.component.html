@@ -1,73 +1,117 @@
-<div class="dashboard-container" [class.example-is-mobile]="mobileQuery.matches">
-  <mat-toolbar class="toolbar">
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="white" class="example-toolbar" >
+    <div class="togglemenu">
+      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    </div>
     
-
-    <button mat-icon-button (click)="sidenav.toggle();">
-      <mat-icon>menu</mat-icon>
-    </button>
-    
-    <h1 class="app-name"> Fundoo</h1>
-    
-    <div class="image">
-      <img src="../../../assets/Images/Google_Keep_icon_(2020).svg"alt=""style="height: 40px;width: 33px;padding-left: 5px ;margin-left:-30px">
-    </div>
-   
-    <div class="topnav">
-     
-      <input type="text" placeholder="Search"style="padding-top: 13px; padding-bottom: 15px;padding-right: 398px;padding-left: 69px;border-radius: 10px;border: 1px solid rgb(199, 196, 196);  font-size: 17px;">
-    </div>
-    <img src="../../../assets/Images/search_black_24dp.svg" style="opacity: 0.6;height: 28px;margin-left: -659px; ">
-    <div class="imagefirst">
-      <img src="../../../assets/Images/refresh_black_24dp (1).svg" alt=""style=" width:33px;">
-    </div>
-    <div class="imageSecond">
-      <img src="../../../assets/Images/view_list_black_24dp.svg" alt=""style="width:33px;">
-    </div>
-    <div class="imagethird">
-      <img src="../../../assets/Images/settings_black_24dp.svg" alt=""style="width:33px;">
-    </div>
-    <div class="imagefourth">
-      <img src="../../../assets/Images/account_circle_black_24dp.svg" alt=""style="width:33px;margin-left:65px;padding-top:15px;">
-    </div>
+    <img class="logo" src="../../../assets/Images/Google_Keep_icon_(2020).svg"width="35px" height="35px" />
+  
+  <div>
+      <h1 class="header" >
+      <span >F</span>
+      <span >u</span>
+      <span >n</span>
+      <span >d</span>
+      <span >o</span>
+      <span >o</span>
+      </h1>        
+  </div>
+  <div class="boxContainer" fxLayout="row" fxLayoutAlign="start center" fxfill>
+      <div>
+          <button mat-button class="searchimg"><img src="../../../assets/outline_search_black_24dp.png.crdownload" style="width:25px; height: 25px;opacity: 60%;" />
+          </button>
+          
+      </div>
+      <div class="elementsContainer">
+          <input type="text" placeholder="Search"
+          class="search">
+          
+      </div>                     
+  </div>
+  
+  <div>  
+      <button mat-button class="refresh" ><img src="../../../assets/outline_refresh_black_24dp.png.crdownload" width="25px" height="25px"/>
+      </button> 
+  </div> 
+  <div>  
+      <button mat-button class="view" ><img src="../../../assets/outline_view_stream_black_24dp.png.crdownload" width="25px" height="25px"/>
+      </button> 
+  </div> 
+  <div>  
+      <button mat-button class="settings" ><img src="../../../assets/outline_settings_black_24dp.png.crdownload" width="25px" height="25px"/>
+      </button> 
+  </div>
   </mat-toolbar>
 
-  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 100">
-  
-    <mat-sidenav #sidenav mode="side" id="sidenav" [class.menu-open]="isMenuOpen" [class.menu-close]="!isMenuOpen" opened style="width: 240px;background-color: transparent;" mode="side" [opened]="true">
-      <div class="menu-container">
-      <mat-nav-list>
-        
+  <div fxLayout="row" fxLayoutAlign="start"> 
+<div class="iconbar">
+      <div class="example-sidenav-content">
+        <button type="button" class="icons" mat-button (click)="snav.toggle()">
          
-        
-        <a mat-list-item routerLink="dashboard/Notes">Notes</a>
-        
-        <a mat-list-item routerLink="dashboard/Reminders">Reminders</a>
-        <a mat-list-item routerLink="dashboard/Edit labels">Edit labels</a>
-        <a mat-list-item routerLink="dashboard/Archive">Archive</a>
-        <button mat-button id="sidenav-button"> <a mat-list-item routerLink="dashboard/Trash">Trash</a></button>
-      </mat-nav-list>
-    </div>
-    </mat-sidenav>
-
-    <mat-sidenav-content>
+          <img class="img" src="../../../assets/outline_lightbulb_black_24dp.png.crdownload"  width="25px" height="25px" />
+          </button>
+          
+      </div>
+      <div class="example-sidenav-content">
+          <button type="button" class="icons" mat-button (click)="snav.toggle()">
+            <img class="img" src="../../../assets/outline_notifications_black_24dp.png.crdownload" width="25px" height="25px" />
+            </button>
+            
+        </div>
+        <div class="example-sidenav-content">
+          <button type="button" class="icons" mat-button (click)="snav.toggle()">
+            <img class="img" src="../../../assets/outline_edit_black_24dp.png.crdownload" width="25px" height="25px" />
+            </button>
+            
+        </div>
+        <div class="example-sidenav-content">
+          <button type="button" class="icons" mat-button (click)="snav.toggle()">
+            <img class="img" src="../../../assets/outline_archive_black_24dp.png.crdownload" width="25px" height="25px" />
+            </button>
+            
+        </div>
+        <div class="example-sidenav-content">
+          <button type="button" class="icons" mat-button (click)="snav.toggle()">
+            <img class="img" src="../../../assets/outline_delete_black_24dp.png.crdownload" width="25px" height="25px" />
+            </button>
+            
+        </div>
+      </div>      
       
-      <div class="note">
-      <img src="../../../assets/Images/lightbulb_black_24dp.svg"style="height:30px; opacity: 0.6;margin-top: 21px;">
-      </div>
-      <div class="reminder">
-      <img src="../../../assets/Images/notifications_black_24dp.svg"style="height:30px;opacity: 0.6;">
-      </div>
-      <p>
-      <img src="../../../assets/Images/mode_edit_outline_black_24dp.svg"style="height:30px;opacity: 0.6;">
-    </p>
-    <p>
-      <img src="../../../assets/Images/archive_black_24dp.svg"style="height:30px;opacity: 0.6;">
-    </p>
-      <img src="../../../assets/Images/delete_outline_black_24dp.svg"style="height:30px;opacity: 0.6;">
-      <app-takenote></app-takenote>
+<div>
+  <mat-sidenav-container 
+  class="example-sidenav-container" style="border: 1px solid green;"
+  [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+
+    
+  <mat-sidenav style="border: 1px solid red; width: 200px;"
+  #snav 
+  [mode]="mobileQuery.matches ? 'over' : 'side'"
+  [fixedInViewport]="mobileQuery.matches" fixedTopGap="56"
+  >
+      
+    <mat-nav-list >
+       
+    
+      <a class="link" mat-list-item routerLink="." style="text-align: center;"> 
+  Notes</a>
+      <a class="link" mat-list-item routerLink=".">Reminders</a>
+      <a class="link" mat-list-item routerLink=".">Edit Labels</a>
+      <a class="link" mat-list-item routerLink=".">Archive</a>
+      <a class="link" mat-list-item routerLink=".">Trash</a>
+       
+    </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content style="overflow:hidden;">
+      <!-- <app-takenote></app-takenote> -->
       <router-outlet></router-outlet>
+      
+     
       
     </mat-sidenav-content>
     
   </mat-sidenav-container>
+</div>
+</div>
+
 </div>

@@ -5,13 +5,30 @@ import { SignupComponent } from './components/signup/signup.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { GetAllNotesComponent } from './components/get-all-notes/get-all-notes.component';
+import { CanActivate } from '@angular/router';
+import { AuthenticationGuard } from './services/authgaurd/authentication.guard';
+import { DisplaynoteComponent } from './components/displaynote/displaynote.component';
+
+
+
 
 const routes: Routes = [
-  {path:'login' , component:LoginComponent},
+  { path: '', redirectTo: "/login", pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
   {path:'signup' , component:SignupComponent},
   {path:'forget-password',component:ForgetPasswordComponent},
   {path:'resetpassword/:token',component:ResetPasswordComponent},
-  {path:'dashboard',component:DashboardComponent}
+  {path:'dashboard',component:DashboardComponent,canActivate:[AuthenticationGuard],
+
+  children: [{ path: '', redirectTo: "notes", pathMatch: "full" },{ path: 'notes', component: GetAllNotesComponent },
+ 
+
+  
+]
+   },
+ 
+    
 
 ];
 

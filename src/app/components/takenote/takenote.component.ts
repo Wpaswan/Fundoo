@@ -1,5 +1,5 @@
 import { Component, OnInit, Output , EventEmitter} from '@angular/core';
-import { NotesService } from 'src/app/services/notes.service';
+import { NotesService } from 'src/app/services/notes/notes.service';
 
 @Component({
   selector: 'app-takenote',
@@ -7,49 +7,42 @@ import { NotesService } from 'src/app/services/notes.service';
   styleUrls: ['./takenote.component.scss']
 })
 export class TakenoteComponent implements OnInit {
-
-  Title: any;
-  Message:any;
-  showDescription: boolean=false;
-  card: boolean = false;
+  title: any;
+  description: any;
+  isExpand=false;
   // @Output() createNoteNew = new EventEmitter<any>();
-  
-  constructor(private NotesService:NotesService) {}
+  constructor(private noteService: NotesService) { }
 
-   ngOnInit(){
+  ngOnInit(): void {
   }
-  show(){
-    this.showDescription=!this.showDescription
-  }
-  createNotes() {
- 
-    let req={
-      
-        "title":this.Title ,
-        "message": this.Message,
-        "remainder": "2022-02-17T06:04:07.648Z",
-        "color": "null",
-        "image": "string",
-        "isArchive": true,
-        "isPin": true,
-        "isTrash": true,
-        "createat": "2022-02-17T06:04:07.648Z",
-        "modifiedat": "2022-02-17T06:04:07.648Z"
-      
-    };
-    console.log(req)
-    this.NotesService.createNotes(req).subscribe((res:any)=>{
-      console.log(res);
-    })
-    // set the model values to '' again
-    
-    // this.createNoteNew.emit(req)
-  }
-  
-  cardSwap() {
-    console.log(this.card);
-    return this.card === true ? (this.card = false) : (this.card = true);
-  
+  main()
+  {
+    return this.isExpand === true ? (this.isExpand = false) : (this.isExpand = true);
   }
 
+  add() {
+    let reqdata = {
+      title: this.title,
+      description: this.description
+    }
+    console.log(reqdata)
+    if (this.title || this.description) {
+      this.noteService.createNotes(reqdata).subscribe((response: any) => {
+        console.log(response);
+        localStorage.setItem("token", response.id)
+        this.title.reset
+      }, error => {
+        console.log(error);
+      })
+      //  this.createNoteNew.emit(reqdata)
+    }
+    else{
+      console.log("Error");
+    }
+  }
+  
 }
+
+
+  
+

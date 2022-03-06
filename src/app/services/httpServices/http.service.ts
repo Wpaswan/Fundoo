@@ -16,8 +16,11 @@ export class HttpService {
    return this.Http.post(this.BaseUrl+url,req,token &&httpOptions)
 
   }
-  getService()
+  getService(url: string, token: boolean= false, httpOptions: any={})
   {
+    
+    return this.Http.get(this.BaseUrl+url,token &&httpOptions)
+ 
 
   }
   putService(){

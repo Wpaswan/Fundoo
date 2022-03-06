@@ -1,27 +1,21 @@
-<mat-card *ngIf="!card" class="matcard"    style=" margin-top: -259px;">
-  <input placeholder="Take a note..." class="input" (click)="cardSwap()" />
-</mat-card>
-<mat-card class="list-view-mat-card" *ngIf="card">
-  <mat-card   style=" margin-top: -259px;width: 600px;margin-top: -235px;    margin-left: 393px;">
-  
-    <img src="../../../assets/Images/newlist.svg" style="opacity:0.6;margin-left: 450px;width: 25px;">
-    <img src="../../../assets/Images/brush_black_24dp.svg" style="opacity:0.6 ;padding-left: 30px;width: 25px;">
-    <img src="../../../assets/Images/crop_original_black_24dp.svg" style="opacity:0.6 ;padding-left: 30px;width: 25px;">
-  
-    <div (click)='show()' *ngIf='showDescription || !showDescription' style="margin-top: -36px;">
-      <!-- <textarea class="titleclass"> Title</textarea> -->
-      <input class="titleclass" [(ngModel)]="Title" placeholder="Title">
-    </div>
-  
-    <div *ngIf='showDescription'>
-      <input class="messageclass" [(ngModel)]="Message" placeholder="Take a note...">
-    </div>
-    <div class="border">
-      <app-noteicons></app-noteicons>
-      <button mat-button class="close" (Click)="createNotes()">
-        Close
-      </button>
-    </div>
-    
-  
-  </mat-card>
+<div class="container" fxLayoutAlign="center center" >
+  <div *ngIf="!isExpand" (click)="main()">
+      <mat-card class="main" fxlayout="column">
+          <input class="content" matInput type="text" placeholder="Take a note...">
+      </mat-card>
+  </div>
+  <div *ngIf="isExpand" >
+      <mat-card  fxLayout="column" fxFlex="125">
+          <div>
+              <textarea class="titlenote"  placeholder="Title" [(ngModel)]="title"></textarea>
+          </div>
+          <div>
+              <textarea class="content1" placeholder="Take a note...." [(ngModel)]="description"></textarea>
+          </div>
+          <div fxLayout="row">
+              <app-noteicons ></app-noteicons>
+              <button class="close" mat-flat-button (click)="isExpand=!isExpand" (click)="add()">Close</button>
+          </div>
+      </mat-card>
+  </div>
+</div>

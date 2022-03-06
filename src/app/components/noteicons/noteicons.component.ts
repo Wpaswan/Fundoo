@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { NotesService } from 'src/app/services/notes.service';
+import { NotesService } from 'src/app/services/notes/notes.service';
 
 @Component({
   selector: 'app-noteicons',

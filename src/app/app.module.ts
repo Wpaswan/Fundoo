@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatFormFieldModule, MatHint} from '@angular/material/form-field';
 import {MatCheckbox, MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 // practice
@@ -27,6 +27,19 @@ import { NoteiconsComponent } from './components/noteicons/noteicons.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { DisplaynoteComponent } from './components/displaynote/displaynote.component';
 import { GetAllNotesComponent } from './components/get-all-notes/get-all-notes.component';
+import { UpdateNoteComponent } from './components/update-note/update-note.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { AuthgaurdService } from './services/authgaurd.service';
+import {MatDialogModule} from '@angular/material/dialog';
+
+
+
+
+
+
+
+
+
 
 
 
@@ -44,6 +57,8 @@ import { GetAllNotesComponent } from './components/get-all-notes/get-all-notes.c
     NoteiconsComponent,
     DisplaynoteComponent,
     GetAllNotesComponent,
+    UpdateNoteComponent,
+    
     
     
     
@@ -69,13 +84,16 @@ import { GetAllNotesComponent } from './components/get-all-notes/get-all-notes.c
     MatListModule,
     // NoteiconsComponent,
     MatButtonModule,
-    
-    MatMenuModule
+    MatExpansionModule,
+       MatMenuModule,
+       MatDialogModule
     
     
     
   ],
-  providers: [],
+  providers: [
+    AuthgaurdService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

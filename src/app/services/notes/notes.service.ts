@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpService } from './httpServices/http.service';
+import { HttpService } from '../httpServices/http.service';
 import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
@@ -11,25 +11,26 @@ export class NotesService {
     this.token= localStorage.getItem('token')
   }
   createNotes(req: any) {
-    this.token= localStorage.getItem('token')
+ 
     console.log("Notes data", this.token,req);
     let options = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json-patch+json',
-        'Authorization':'Bearer ' + this.token,
+        'Content-Type': 'application/json',
+        'Authorization': this.token
+        
       })
     }
-    return this.http.postService('Notes/CreateNotes', req,true,  options)
+    return this.http.postService('notes/addNotes', req,true,  options)
   }
   getAllNotes() {
     console.log("Notes data");
     let header = {
       headers: new HttpHeaders({
         'Content-type': 'application/json',
-        'Authorization':'Bearer ' + this.token
+        'Authorization': this.token
       })
     }
-    // return this.http.getService('Notes/getAllNotes',true, header)
+    return this.http.getService('notes/getNotesList',true,header);
   }
   trashNotes(req:any,token:any){
     this.token=localStorage.getItem('token');

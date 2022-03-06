@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {ChangeDetectorRef, OnDestroy}from '@angular/core';
+import { Component,ChangeDetectorRef, OnInit } from '@angular/core';
+
 import {MediaMatcher} from '@angular/cdk/layout';
 
 
@@ -8,39 +8,27 @@ import {MediaMatcher} from '@angular/cdk/layout';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnDestroy {
-  isMenuOpen=true;
-  contentMargin=200;
+export class DashboardComponent implements OnInit {
   mobileQuery: MediaQueryList;
+ 
 
-  fillerNav = Array.from({length: 5}, (_, i) => `Notes`);
-  fillerContent = Array.from(
-    {length: 5},
-    () =>
-      ``,
-  );
 
+ 
+  
 
   private _mobileQueryListener: () => void;
-
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) { 
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
 
-  ngOnDestroy(): void {
+  ngOnInit(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
-  toggle(){
-    this.isMenuOpen = !this.isMenuOpen;
-    if(!this.isMenuOpen)
-    {
-      this.contentMargin=50;
-    }
-    else{
-      this.contentMargin=400;
-    }
-  }
+  shouldRun = /(^|.)(stackblitz|webcontainer).(io|com)$/.test(
+    window.location.host
+  );
+
 
 }

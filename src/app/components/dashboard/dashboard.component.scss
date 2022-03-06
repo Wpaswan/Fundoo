@@ -1,6 +1,93 @@
-.dashboard-container {
-  display: flex;
+.example-toolbar{
+  background-color: white;
+  border-bottom: 0.5px solid whitesmoke;
+}
+.togglemenu{
   
+  opacity: 60%;  
+  border-radius: 50%;
+  margin-left: 12px;
+  padding: 0;
+  width: 50px;
+}
+
+.header{
+  font-family:cursive;
+  font-style: bold;    
+  margin-top:5%;
+  text-align: center;
+  font-weight: 600;
+  margin-left: 15px;
+  font-size: larger;
+}
+.boxContainer{
+   margin:auto;
+   width: 400px;
+   border-radius: 5px;
+   border:1px solid grey;
+   background-color: white;
+}
+.search{
+  border: none;
+  width: 330px;
+  height:30px ;
+  border-radius: 20px;
+}
+.search:focus{
+  outline: none;
+}
+.searchimg{
+   border-radius: 20px;
+   width: 25px;
+}
+.refresh{
+  display:block;
+  height: 30px;
+  width: 30px;   
+  opacity: 60%;
+}
+.view{
+  display:block;
+  height: 30px;
+  width: 30px;   
+  opacity: 60%;
+}
+.settings{
+  display:block;
+  height: 30px;
+  width: 30px;   
+  opacity: 60%;
+  text-align: center;
+}
+.link{
+  width: 250px;
+  height: 50px;  
+  opacity: 60%;
+  
+}
+.icons{
+  height: 48px;
+  opacity: 60%;  
+  border-radius: 50%;
+  margin-left: 12px;
+  padding: 0;
+  width: 50px;
+}
+.iconbar{
+ padding-top: 8px;
+}
+// .example-is-mobile .example-toolbar {
+//     position: fixed;
+//     /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+//     z-index: 2;
+//   }
+//   .example-sidenav-container {
+//     /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+//        causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+//     flex: 1;
+//   }
+.example-container {
+  display: flex;
   flex-direction: column;
   position: absolute;
   top: 0;
@@ -9,22 +96,22 @@
   right: 0;
 }
 
-.toolbar {
+.example-is-mobile .example-toolbar {
   position: fixed;
-  border:1px solid rgba(185, 181, 181, 0.295);
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
   z-index: 2;
 }
 
-.app-name {
-  margin-left: 51px;
-  font-size: 25px;
-  color: rgb(100, 96, 96);
+h1.example-app-name {
+  margin-left: 8px;
 }
 
-.example-sidenav-container {
+.example-sidenav-container{
   /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
      causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
   flex: 1;
+  width:1280px;
+  height: 600px;
 }
 
 .example-is-mobile .example-sidenav-container {
@@ -32,36 +119,3 @@
      `<body>` to be our scrolling element for mobile layouts. */
   flex: 1 0 auto;
 }
-.image{
-  margin-left: -111px;
-  height: 40px;
-  width: 35px;
-        padding-left: 11px;
-}
-.imagefirst{
-  width:40px;
-  height:30px;
-  margin-left: 1105px;
-  opacity: 0.6;
-}
-.imageSecond{
-  width:31px;
-  height:25px;
-  margin-left: 30px;
-  opacity: 0.6;
-}
-.imagethird{
-  width:30px;
-  height:25px;
-  margin-left: 22px;
-  opacity: 0.6;
-}
-.topnav{
-  margin-left: 200px;
-}
-  .imagefourth{
-    opacity: 0.6;
-  }
-  .reminder{
-    margin-top: 15px;
-  }
