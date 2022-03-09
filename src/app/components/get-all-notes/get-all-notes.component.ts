@@ -17,6 +17,11 @@ export class GetAllNotesComponent implements OnInit {
     this.getAllNotes();
     console.log(this.notes)
   }
+  autoRefresh(data:any)
+  {
+     console.log("refreshed",data);
+     this.getAllNotes()
+  }
   getAllNotes() {
   
     this. NotesService.getAllNotes().subscribe((res:any)=>{
@@ -24,18 +29,15 @@ export class GetAllNotesComponent implements OnInit {
       console.log(res);
      this.notes=res.data.data
      console.log(this.notes)
-     
+     this.notes = this.notes.filter((data: any) => {
+      console.log(data.isDeleted)
+      return data.isDeleted === false && data.isArchived === false;
+    })
     })
   
   
    
   }
-  //use filter method here
-  filterTrash(){
-   let req = this.notes.filter((res:any)=>
-    {
-       return !res.active;
-    })
-  }
+  
 
 }

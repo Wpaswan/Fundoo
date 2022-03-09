@@ -31,6 +31,13 @@ import { UpdateNoteComponent } from './components/update-note/update-note.compon
 import { MatExpansionModule } from '@angular/material/expansion';
 import { AuthgaurdService } from './services/authgaurd.service';
 import {MatDialogModule} from '@angular/material/dialog';
+import { TrashnoteComponent } from './components/trashnote/trashnote.component';
+import { ArchivenoteComponent } from './components/archivenote/archivenote.component';
+
+
+
+
+
 
 
 
@@ -58,6 +65,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     DisplaynoteComponent,
     GetAllNotesComponent,
     UpdateNoteComponent,
+    TrashnoteComponent,
+    ArchivenoteComponent,
     
     
     
@@ -86,7 +95,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatButtonModule,
     MatExpansionModule,
        MatMenuModule,
-       MatDialogModule
+       MatDialogModule,
+       
+       
     
     
     

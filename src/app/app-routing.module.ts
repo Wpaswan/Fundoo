@@ -9,6 +9,8 @@ import { GetAllNotesComponent } from './components/get-all-notes/get-all-notes.c
 import { CanActivate } from '@angular/router';
 import { AuthenticationGuard } from './services/authgaurd/authentication.guard';
 import { DisplaynoteComponent } from './components/displaynote/displaynote.component';
+import { ArchivenoteComponent } from './components/archivenote/archivenote.component';
+import { TrashnoteComponent } from './components/trashnote/trashnote.component';
 
 
 
@@ -21,7 +23,13 @@ const routes: Routes = [
   {path:'resetpassword/:token',component:ResetPasswordComponent},
   {path:'dashboard',component:DashboardComponent,canActivate:[AuthenticationGuard],
 
-  children: [{ path: '', redirectTo: "notes", pathMatch: "full" },{ path: 'notes', component: GetAllNotesComponent },
+  children: [{ path: '', redirectTo: "notes", pathMatch: "full" },
+  { path: 'notes', component: GetAllNotesComponent },
+  { path: 'displaynote', component:DisplaynoteComponent },
+  { path: 'archivenote', component:ArchivenoteComponent },
+ 
+  { path: 'trashnote', component:TrashnoteComponent }
+
  
 
   

@@ -1,1 +1,15 @@
-<p>update-note works!</p>
+<div>
+    <mat-card-title fxLayout="row" style="font-size: 22px; width: 600px; height: auto;">
+        <input matInput type="text" [(ngModel)]="title" />
+        <mat-icon matTooltip="Pin note" style="float: right;">push_pin</mat-icon>
+    </mat-card-title>
+
+    <mat-card-subtitle style="font-size: 1rem; padding-top: 3%; padding-bottom: 10%;">
+        <input matInput type="text" [(ngModel)]="description" />
+    </mat-card-subtitle>
+
+    <mat-card-content fxlayout="row" fxLayoutAlign="space-between center" fxLayout.xs="row">
+        <app-noteicons></app-noteicons>
+        <button mat-stroked-button (click)="Update()">close</button>
+    </mat-card-content>
+</div>

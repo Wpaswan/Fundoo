@@ -1,9 +1,12 @@
-<div class="border">
+<div class="border"
+*ngIf="showIcons && this.cardObject.isDeleted === false">
     <div class="cl">
-        <button mat-icon-button>
+        <button mat-icon-button (click)="reminder()">
             <mat-icon>add_alert</mat-icon>
         </button>
     </div>
+       
+    
     <div class="cl">
         <button mat-icon-button>
             <mat-icon>person_add</mat-icon>
@@ -11,15 +14,32 @@
     </div>
     <div class="cl">
         <button mat-icon-button>
-            <mat-icon>color_lens</mat-icon>
+            <mat-icon>color_lens
+               
+                <button [matMenuTriggerFor]="colorMenu" class="iconbutton3" fxLayout="row"
+                    fxLayoutAlign="space-around center">
+                    <img src="../../../assets/outline_palette_black_24dp.png" alt="">
+                </button>
+                <mat-menu #colorMenu="matMenu">
+                    <button mat-menu-item>
+                        <button *ngFor="let noteColor of colors" mat-mini-fab
+                            [style.background]="noteColor?.bgColorValue" (click)="changeColor(noteColor?.bgColorValue)">
+
+
+                        </button>
+
+                    </button>
+                </mat-menu>
+            </mat-icon>
+          
         </button>
     </div>
-    <div class="cl">
+    <!-- <div class="cl">
         <button mat-icon-button>
             <mat-icon>image</mat-icon>
         </button>
-    </div>
-    <div class="cl">
+    </div> -->
+    <div class="cl" *ngIf="showIcons && this.cardObject.isArchived === false">
         <button mat-icon-button (click)="archiveNote()">
             <mat-icon>archive</mat-icon>
         </button>
@@ -32,5 +52,14 @@
             <button mat-menu-item (click)="trashNotes()">Delete note</button>
         </mat-menu>
     </div>
-    
+    <div class="trashIcons" *ngIf="!showIcons || this.cardObject.isDeleted === true">
+        <button mat-icon-button (click)="deletePermanently()">
+            <mat-icon>delete</mat-icon>
+            <img src="../../../assets/" alt="">
+        </button>
+        <button mat-icon-button (click)="restorenote()">
+            <img src="../../../assets/restore_from_trash_black_24dp.svg" alt="">
+        </button>
+    </div>
+
 </div>

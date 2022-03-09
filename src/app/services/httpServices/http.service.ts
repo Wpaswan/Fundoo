@@ -10,7 +10,7 @@ export class HttpService {
   BaseUrl=environment.BaseUrl
 
   constructor(private  Http:HttpClient) { }
-  postService(url: string, req: any, token: boolean= false, httpOptions: any={} )
+  postService(url: string, req: any={}, token: boolean= false, httpOptions: any={} )
   {
     console.log(req)
    return this.Http.post(this.BaseUrl+url,req,token &&httpOptions)
@@ -24,7 +24,7 @@ export class HttpService {
 
   }
   putService(){
-    
+   
   }
   
   deleteService()

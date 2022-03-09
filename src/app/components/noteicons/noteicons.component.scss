@@ -52,11 +52,11 @@ button{
  
 }
 mat-icon{
-opacity: 0.6;
+opacity: 0.3;
 cursor: pointer;
 }
 mat-icon:hover{
-opacity: 0.9;
+opacity: 2;
 }
 
 .matMenu{
@@ -66,4 +66,29 @@ width: 80%;
 display: flex;
 align-items: center;
 justify-content: space-between;
+}
+.iconbutton3{
+  cursor: pointer;
+  border: none;
+  background: none;
+  margin-top: -23px;
+  margin-left: auto;
+  
+  // background-color: white;
+}
+
+.trashIcons{
+  // border: 5px solid transparent;
+  // border: 2px solid red;
+  height: 200;
+  width: 160;
+  // top: 20px;
+  display: flex;
+    align-items: center;
+  background-color: transparent;
+  margin-left: -105px;
+ 
+  justify-content: space-between;
+  opacity: 0.54;
+  // padding-left: -5%;
 }

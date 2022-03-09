@@ -10,7 +10,8 @@ export class TakenoteComponent implements OnInit {
   title: any;
   description: any;
   isExpand=false;
-  // @Output() createNoteNew = new EventEmitter<any>();
+  
+  @Output() createNoteToRefresh= new EventEmitter<any>();
   constructor(private noteService: NotesService) { }
 
   ngOnInit(): void {
@@ -26,15 +27,16 @@ export class TakenoteComponent implements OnInit {
       description: this.description
     }
     console.log(reqdata)
+    
     if (this.title || this.description) {
       this.noteService.createNotes(reqdata).subscribe((response: any) => {
         console.log(response);
-        localStorage.setItem("token", response.id)
+        this.createNoteToRefresh.emit(Response)
         this.title.reset
       }, error => {
         console.log(error);
       })
-      //  this.createNoteNew.emit(reqdata)
+      
     }
     else{
       console.log("Error");

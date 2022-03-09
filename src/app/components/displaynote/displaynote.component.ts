@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { NotesService } from 'src/app/services/notes/notes.service';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
 import { Input } from '@angular/core';
@@ -12,27 +12,40 @@ import { Input } from '@angular/core';
 export class DisplaynoteComponent implements OnInit {
   @Input() noteList:any;
   notes:any;
-  token: any;
+
   title: any;
   description: any;
+  token: any;
+  
+
   tokenId = localStorage.getItem("Token");
 
-  constructor(private NotesService:NotesService, public dialog: MatDialog) { }
+  constructor(private NotesService:NotesService, public dialog: MatDialog) { 
+    
+  }
    
   openDialog(noteObjet: any): void {
+    
     const dialogRef = this.dialog.open(UpdateNoteComponent, {
       width: '650px',
       data: noteObjet,
-    })
+      
+    
+    }
+    )
 
     dialogRef.afterClosed().subscribe((res:any) => {
-
+      this.tokenId=res;
       this.title = res;
       this.description = res;
     });
   }
   ngOnInit(){
     console.log(this.noteList,this.tokenId);
+  }
+  messageReceivedFromNote(e:any){  // this is used for data sharing between icons(child) and displaynotes(parent)
+    console.log(e);
+    
   }
   
 

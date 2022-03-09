@@ -41,6 +41,14 @@
       <button mat-button class="settings" ><img src="../../../assets/outline_settings_black_24dp.png.crdownload" width="25px" height="25px"/>
       </button> 
   </div>
+  <div>  
+    <button mat-button class="settings" ><img src="../../../assets/outline_apps_black_24dp.png.crdownload" width="25px" height="25px"/>
+    </button> 
+</div>
+<div>  
+  <button mat-button class="settings" (click)="Logout()"class="example-icon" aria-label="Example icon-button with menu icon"><img src="../../../assets/outline_account_circle_black_24dp.png.crdownload" width="25px" height="25px"/>
+  </button> 
+</div>
   </mat-toolbar>
 
   <div fxLayout="row" fxLayoutAlign="start"> 
@@ -66,13 +74,13 @@
         </div>
         <div class="example-sidenav-content">
           <button type="button" class="icons" mat-button (click)="snav.toggle()">
-            <img class="img" src="../../../assets/outline_archive_black_24dp.png.crdownload" width="25px" height="25px" />
+            <img class="img" (click)="archive()" src="../../../assets/outline_archive_black_24dp.png.crdownload" width="25px" height="25px" />
             </button>
             
         </div>
         <div class="example-sidenav-content">
           <button type="button" class="icons" mat-button (click)="snav.toggle()">
-            <img class="img" src="../../../assets/outline_delete_black_24dp.png.crdownload" width="25px" height="25px" />
+            <img class="img" (click)="trash()" src="../../../assets/outline_delete_black_24dp.png.crdownload" width="25px" height="25px" />
             </button>
             
         </div>
@@ -80,11 +88,11 @@
       
 <div>
   <mat-sidenav-container 
-  class="example-sidenav-container" style="border: 1px solid green;"
+  class="example-sidenav-container" 
   [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
 
     
-  <mat-sidenav style="border: 1px solid red; width: 200px;"
+  <mat-sidenav style="width: 300px;"
   #snav 
   [mode]="mobileQuery.matches ? 'over' : 'side'"
   [fixedInViewport]="mobileQuery.matches" fixedTopGap="56"
@@ -102,7 +110,7 @@
        
     </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content style="overflow:hidden;">
+    <mat-sidenav-content >
       <!-- <app-takenote></app-takenote> -->
       <router-outlet></router-outlet>
       
