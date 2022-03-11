@@ -1,65 +1,44 @@
-<div class="border"
-*ngIf="showIcons && this.cardObject.isDeleted === false">
-    <div class="cl">
-        <button mat-icon-button (click)="reminder()">
-            <mat-icon>add_alert</mat-icon>
-        </button>
+<div *ngIf="!isTrashNotesComponent" fxLayout="row" fxLayoutAlign="start end" fxLayoutGap="25px" style="margin-top: 30px;" >
+    <div  style="width:15px; height:15px;">
+        <button class="icons" mat-icon-button><img src="../../../assets/1x outline_add_alert_black_4dp.png.crdownload" style="width:20px; height:20px;"></button>
+        
     </div>
-       
-    
-    <div class="cl">
-        <button mat-icon-button>
-            <mat-icon>person_add</mat-icon>
-        </button>
+    <div  style="width:15px; height:15px;">
+        <button class="icons" mat-icon-button><img src="../../../assets/outline_person_add_alt_black_24dp.png.crdownload" style="width:20px; height:20px;"></button>
     </div>
-    <div class="cl">
-        <button mat-icon-button>
-            <mat-icon>color_lens
-               
-                <button [matMenuTriggerFor]="colorMenu" class="iconbutton3" fxLayout="row"
-                    fxLayoutAlign="space-around center">
-                    <img src="../../../assets/outline_palette_black_24dp.png" alt="">
-                </button>
-                <mat-menu #colorMenu="matMenu">
-                    <button mat-menu-item>
-                        <button *ngFor="let noteColor of colors" mat-mini-fab
-                            [style.background]="noteColor?.bgColorValue" (click)="changeColor(noteColor?.bgColorValue)">
-
-
-                        </button>
-
-                    </button>
-                </mat-menu>
-            </mat-icon>
-          
-        </button>
-    </div>
-    <!-- <div class="cl">
-        <button mat-icon-button>
-            <mat-icon>image</mat-icon>
-        </button>
-    </div> -->
-    <div class="cl" *ngIf="showIcons && this.cardObject.isArchived === false">
-        <button mat-icon-button (click)="archiveNote()">
-            <mat-icon>archive</mat-icon>
-        </button>
-    </div>
-    <div class="cl">
-        <button mat-icon-button [matMenuTriggerFor]="menu">
-            <mat-icon>more_vert</mat-icon>
-        </button>
+    <div style="width:15px; height:15px;">      
+        <button mat-icon-button [matMenuTriggerFor]="menu"><img src="../../../assets/outline_palette_black_24dp.png.crdownload" style="width:20px; height:20px;"></button>
         <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="trashNotes()">Delete note</button>
+            <div class="pallete" fxLayoutGap="2px">
+                <button class="colors"*ngFor="let noteColor of colors" mat-mini-fab [style.background]="noteColor?.bgColorValue"
+            (click)="changeColor(noteColor?.bgColorValue)"></button>
+            
+            </div>  
         </mat-menu>
     </div>
-    <div class="trashIcons" *ngIf="!showIcons || this.cardObject.isDeleted === true">
-        <button mat-icon-button (click)="deletePermanently()">
-            <mat-icon>delete</mat-icon>
-            <img src="../../../assets/" alt="">
-        </button>
-        <button mat-icon-button (click)="restorenote()">
-            <img src="../../../assets/restore_from_trash_black_24dp.svg" alt="">
-        </button>
+    <div style="width:15px; height:15px;">      
+        <button class="icons" mat-icon-button><img src="../../../assets/outline_image_black_24dp.png.crdownload" style="width:20px; height:20px;"></button>
     </div>
+    <div *ngIf="!isArchiveNotesComponent" style="width:15px; height:15px;">
+        <button class="icons" mat-icon-button  (click)="archivenote()"><img src="../../../assets/1x outline_archive_black_24dp.png" style="width:20px; height:20px;"></button>
+    </div>
+    <div *ngIf="isArchiveNotesComponent"  style="width:15px; height:15px;">
+        <button  class="icons" mat-icon-button (click)="unarchivenote()"><img src="../../../assets/outline_unarchive_black_24dp (1).png" style="width:20px; height:20px;"></button>
+    </div>
+    <div  style="width:15px; height:15px; margin-left: 30px;">
+        <button class="icons" mat-icon-button [matMenuTriggerFor]="menu1"><img src="../../../assets/outline_more_vert_black_24dp.png.crdownload" style="width:20px; height:20px;"></button>
+        <mat-menu #menu1="matMenu">
+            <button class="icons" mat-menu-item (click)="deletenote()">Delete Note</button>
+          </mat-menu>
+    </div>
+</div>
 
+
+<div *ngIf="isTrashNotesComponent" fxLayout="row" fxLayoutAlign="start end" fxLayoutGap="25px" style="margin-top: 30px;" >
+    <div  style="width:15px; height:15px;">
+        <button class="icons2" mat-icon-button (click)="deleteforever()"><img src="../../../assets/outline_delete_forever_black_24dp.png" style="width:20px; height:20px;"></button>      
+    </div>
+    <div  style="width:15px; height:15px;">
+        <button class="icons2" mat-icon-button (click)="restorenote()"><img src="../../../assets/outline_restore_from_trash_black_24dp (1).png" style="width:20px; height:20px;"></button>      
+    </div>
 </div>

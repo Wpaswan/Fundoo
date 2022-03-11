@@ -7,39 +7,40 @@ import { NotesService } from 'src/app/services/notes/notes.service';
   styleUrls: ['./takenote.component.scss']
 })
 export class TakenoteComponent implements OnInit {
+  @Output() createNoteToRefresh= new EventEmitter<any>();
   title: any;
   description: any;
-  isExpand=false;
-  
-  @Output() createNoteToRefresh= new EventEmitter<any>();
-  constructor(private noteService: NotesService) { }
+  submitted = false;
 
-  ngOnInit(): void {
-  }
-  main()
-  {
-    return this.isExpand === true ? (this.isExpand = false) : (this.isExpand = true);
-  }
+    
+  constructor( private notesService:NotesService) { }
 
-  add() {
-    let reqdata = {
+  ngOnInit(): void {    
+  }
+  isShow: boolean=false;
+
+  takeanote() {    
+    console.log(this.isShow);
+    return this.isShow==true ? (this.isShow = false) : (this.isShow = true);
+  }
+  close() {
+    let reqData = {
       title: this.title,
       description: this.description
-    }
-    console.log(reqdata)
-    
-    if (this.title || this.description) {
-      this.noteService.createNotes(reqdata).subscribe((response: any) => {
-        console.log(response);
-        this.createNoteToRefresh.emit(Response)
-        this.title.reset
-      }, error => {
-        console.log(error);
-      })
+
       
+    }    
+    console.log(reqData)
+    if (this.title && this.description) {
+      this.notesService.takenotes(reqData).subscribe((Response: any) => {
+        console.log(Response);
+        
+        this.createNoteToRefresh.emit(Response)
+        localStorage.setItem("token", Response.id)
+      }, error => { console.log(error); })
     }
-    else{
-      console.log("Error");
+    else {
+      console.log("Form is not valid. Please Fill the form correctly");
     }
   }
   

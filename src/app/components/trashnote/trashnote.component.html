@@ -1,2 +1,2 @@
-<app-displaynote    [noteList]="notestrash" ></app-displaynote>
+<app-displaynote (changeColorOfNote)="trash($event)"   (changeColorOfNote)="restoreNote($event)" [allnotes]="notestrash" ></app-displaynote>
 

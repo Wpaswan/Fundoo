@@ -7,37 +7,57 @@ import { NotesService } from 'src/app/services/notes/notes.service';
   styleUrls: ['./get-all-notes.component.scss']
 })
 export class GetAllNotesComponent implements OnInit {
-  token:any;
-  title:any;
-  description:any;
-  notes:any;
-  constructor(private NotesService:NotesService) { }
+  token: any;
+  notesarray:any;
+  noteId:any
+  
+  
+  constructor(private notesService:NotesService) { }
 
-  ngOnInit() {
-    this.getAllNotes();
-    console.log(this.notes)
+  ngOnInit(): void {
+    this.GetAllNotes()
+    }
+    
+  GetAllNotes(){
+    this.notesService.getnotes().subscribe((Response:any)=>{
+      this.notesarray=Response.data.data;
+      this.notesarray.reverse();
+      console.log(this.notesarray);
+      this.notesarray = this.notesarray.filter((data: any) => {
+        console.log(data.isDeleted)
+        return data.isDeleted === false && data.isArchived === false;
+      })
+    },(error)=>{console.log(error)});
+   
   }
   autoRefresh(data:any)
   {
      console.log("refreshed",data);
-     this.getAllNotes()
+     this.GetAllNotes();
   }
-  getAllNotes() {
-  
-    this. NotesService.getAllNotes().subscribe((res:any)=>{
-      
-      console.log(res);
-     this.notes=res.data.data
-     console.log(this.notes)
-     this.notes = this.notes.filter((data: any) => {
-      console.log(data.isDeleted)
-      return data.isDeleted === false && data.isArchived === false;
-    })
-    })
-  
-  
-   
+  colourchanged(e:any){
+    console.log(e);
+    this.GetAllNotes();
   }
-  
+  update(e:any){
+    console.log(e);
+    this.GetAllNotes();
+  }
+  trash(data:any)
+  {
+     console.log("refreshed",data);
+     this.GetAllNotes();
+  }
+  archive(data:any)
+  {
+     console.log("refreshed",data);
+     this.GetAllNotes();
+  }
+  // unarchivenote(data:any)
+  // {
+  //   console.log("refreshed",data);
+  //    this.GetAllNotes();
+
+  // }
 
 }

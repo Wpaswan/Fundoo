@@ -16,10 +16,10 @@ export class HttpService {
    return this.Http.post(this.BaseUrl+url,req,token &&httpOptions)
 
   }
-  getService(url: string, token: boolean= false, httpOptions: any={})
+  getService(url: string, httpOptions: any={})
   {
     
-    return this.Http.get(this.BaseUrl+url,token &&httpOptions)
+    return this.Http.get(this.BaseUrl+url,httpOptions)
  
 
   }

@@ -10,38 +10,36 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./update-note.component.scss']
 })
 export class UpdateNoteComponent implements OnInit {
-  title:any;
-  description:any;
-  token:any;
-  noteId:any;
-  constructor(private NotesService:NotesService,public dialogRef: MatDialogRef<UpdateNoteComponent>, 
-    @Inject(MAT_DIALOG_DATA) public note: any) { }
+  title:any
+  description:any
+ noteId:any
 
-  ngOnInit() {
-    console.log('data from dialog',this.note)
-    this.noteId=this.note.id
-    
-    this.title=this.note.title
-    this.description=this.note.description
+  constructor(private notesService:NotesService,public dialogRef:MatDialogRef<UpdateNoteComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  ngOnInit(): void {
+    this.title=this.data.title,
+    this.description=this.data.description,
+    this.noteId=this.data.id
   }
-  Update() {
-    let req = {
-     
-      // tokenId : localStorage.getItem("Token"),
-      noteId: this.noteId,
+  
+  close() {
+    let reqData = {
       title: this.title,
       description: this.description,
-  
-    }
-    this.NotesService.userUpdateNotes(req).subscribe((res:any)=>{
-      console.log("Note is updated")
-      console.log(res)
-      
-    })
-    
+      noteId:this.noteId
+    } 
     this.dialogRef.close();
+    console.log(reqData)
+    if (this.title && this.description) {
+      this.notesService.editnotes(reqData).subscribe((Response: any) => {
+        console.log(Response);
+        localStorage.setItem("token", Response.id)
+      }, error => { console.log(error); })
+    }
+    else {
+      console.log("Form is not valid. Please Fill the form correctly");
+    }  
+  
   }
-
-
 
 }

@@ -1,19 +1,30 @@
-<div class="main" fxLayout="row wrap" fxLayoutGap="20px grid" style=" margin-left: 94;"   >
-    
-    <div class="notes" *ngFor="let note of noteList"  >
+<div class="content" >
+    <div style="margin-top: 100px; margin-left: 40px;">
+    <div fxLayout="row wrap" >
+       
+        <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="column" fxlayoutAlign="space-between" fxFlex.xs="100" *ngFor="let note of allnotes|searchfilter:searchWord" >
+            <mat-card [style.background]="note.color" class="card" style="width:250px; height:100px; margin-bottom: 40px;" fxLayout.XS="column" fxFlex.xs="95">
+                <div (click)="openDialog(note)">
+                <div>
+                    <strong>{{note.title}}</strong>
+                </div>
+                    <div>{{note.description}}</div>
+            </div>
+                <div>
+                    <app-noteicons (archiveNoteToRefresh)="archive($event)" (trashNoteToRefresh)="trash($event)"   (changeColorOfNote)="message($event)"  class="icons" [iconnote]="note"></app-noteicons>
+                </div>
+            
+            </mat-card>
 
-        <mat-card class="example-card" [style.background]="note.color" >
-        <button class="pinbutton"  >
-            <img class="pin" src="../../../assets/Images/push_pin_black_24dp.svg" alt="" style="margin-left:250px;opacity:0.6;"  >
-          </button>
+        </div>
 
-         <div style="font-size: 18px;padding-top: 15px;padding-left: 15px;font-weight: 500;"> <mat-card-title (click)="openDialog(note)">{{note.title}}</mat-card-title></div>
-        <div style="font-size: 18px;padding-top: 15px;padding-left: 15px;"> <mat-card-subtitle (click)="openDialog(note)">{{note.description}}</mat-card-subtitle></div> 
-        
-    <app-noteicons [cardObject]="note" (changeColorOfNote)="messageReceivedFromNote($event)" ></app-noteicons>
-    </mat-card>
-    
+       
     </div>
-    </div>
-    
-    
+</div>
+</div>
+
+
+
+
+
+

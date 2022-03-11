@@ -1,21 +1,38 @@
-<div class="container" fxLayoutAlign="center center" >
-  <div *ngIf="!isExpand" (click)="main()">
-      <mat-card class="main" fxlayout="column">
-          <input class="content" matInput type="text" placeholder="Take a note...">
-      </mat-card>
-  </div>
-  <div *ngIf="isExpand" >
-      <mat-card  fxLayout="column" fxFlex="125">
-          <div>
-              <textarea class="titlenote"  placeholder="Title" [(ngModel)]="title"></textarea>
-          </div>
-          <div>
-              <textarea class="content1" placeholder="Take a note...." [(ngModel)]="description"></textarea>
-          </div>
-          <div fxLayout="row">
-              <app-noteicons ></app-noteicons>
-              <button class="close" mat-flat-button (click)="isExpand=!isExpand" (click)="add()">Close</button>
-          </div>
-      </mat-card>
-  </div>
+<div fxLayout="row" fxLayoutAlign="center none">
+    <div  *ngIf="!isShow" (click)="takeanote()"> 
+        <mat-card fxLayout="row" fxLayoutAlign=" stretch" style="margin-top: 100px; border-radius: 8px;">
+            <div>    
+                <input type="notes" class="textin" placeholder="Take a note...">          
+            </div>             
+        </mat-card>
+    </div>
+<div > 
+ 
+<div *ngIf="isShow">
+    <mat-card fxLayout="column" fxLayoutAlign=" stretch" style="margin-top: 100px; border-radius: 8px;"> 
+    <div fxLayout="row" fxLayoutAlign="start center">
+    <div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+        <input type="notes" [(ngModel)]="title" class="textin1" placeholder="Title...">
+    </div>
+    <div>
+        <button type="button" class="icons" mat-button style="opacity: 60%;">
+            <img class="img" src="../../../assets/outline_push_pin_black_24dp.png" width="25px" height="25px" />
+        </button>  
+    </div>
+    </div>
+    <div>
+        <textarea matInput [(ngModel)]="description" class="text1" placeholder="Take a note..." cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="40"></textarea>   
+    </div>        
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div>
+                <app-noteicons></app-noteicons>
+            </div>
+            <div>
+                <a class="link" mat-button  (click)="isShow=!isShow" (click)="close()">Close</a>
+            </div>
+        </div>
+    </mat-card>
 </div>
+  
+</div>  

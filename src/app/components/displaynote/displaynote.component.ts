@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { NotesService } from 'src/app/services/notes/notes.service';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
 import { Input } from '@angular/core';
+import { DataService } from 'src/app/services/dataservice/data.service';
+
 
 @Component({
   selector: 'app-displaynote',
@@ -10,43 +12,61 @@ import { Input } from '@angular/core';
   styleUrls: ['./displaynote.component.scss']
 })
 export class DisplaynoteComponent implements OnInit {
-  @Input() noteList:any;
-  notes:any;
+  // @Output() trashNoteToRefresh = new EventEmitter<any>();
+  @Input() allnotes: any;
+  title: any
+  description: any
+  public searchWord: any
 
-  title: any;
-  description: any;
-  token: any;
-  
+  @Output() changeColorOfNote = new EventEmitter<any>();
+  @Output() updateNoteToRefresh = new EventEmitter<any>();
+  @Output() trashNoteToRefresh = new EventEmitter<any>();
+  @Output() archiveNoteToRefresh = new EventEmitter<any>();
 
-  tokenId = localStorage.getItem("Token");
 
-  constructor(private NotesService:NotesService, public dialog: MatDialog) { 
-    
-  }
-   
-  openDialog(noteObjet: any): void {
-    
-    const dialogRef = this.dialog.open(UpdateNoteComponent, {
-      width: '650px',
-      data: noteObjet,
-      
-    
+
+
+
+  constructor(private note: NotesService, private dialog: MatDialog, private dataService: DataService) { }
+
+  ngOnInit(): void {
+    this.dataService.receivedData.subscribe((response: any) => {
+      console.log("searched", response);
+      this.searchWord = response
+
     }
     )
+  }
 
-    dialogRef.afterClosed().subscribe((res:any) => {
-      this.tokenId=res;
-      this.title = res;
-      this.description = res;
+
+
+  openDialog(note: any) {
+    const dialogRef = this.dialog.open(UpdateNoteComponent, {
+      width: '600px',
+      data: note
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      console.log('The dialog was closed');
+      this.updateNoteToRefresh.emit('hii')
     });
   }
-  ngOnInit(){
-    console.log(this.noteList,this.tokenId);
-  }
-  messageReceivedFromNote(e:any){  // this is used for data sharing between icons(child) and displaynotes(parent)
+  message(e: any) {
     console.log(e);
-    
+    this.changeColorOfNote.emit("colour")
+
+
   }
-  
+  trash(data: any) {
+    console.log(data);
+    this.trashNoteToRefresh.emit("hello")
+  }
+  archive(data: any) {
+    console.log(data);
+    this.archiveNoteToRefresh.emit("hello")
+  }
+
+
 
 }

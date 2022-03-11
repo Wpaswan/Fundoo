@@ -1,5 +1,7 @@
 import { Component,ChangeDetectorRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NotesService } from 'src/app/services/notes/notes.service';
+import { DataService } from 'src/app/services/dataservice/data.service';
 
 import {MediaMatcher} from '@angular/cdk/layout';
 
@@ -11,9 +13,12 @@ import {MediaMatcher} from '@angular/cdk/layout';
 })
 export class DashboardComponent implements OnInit {
   mobileQuery: MediaQueryList;
+  isShow = false;
+  
+  
 
   private _mobileQueryListener: () => void;
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,private router:Router) { 
+  constructor(private noteService:NotesService, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,private router:Router,private dataService:DataService) { 
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -22,21 +27,21 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
-  shouldRun = /(^|.)(stackblitz|webcontainer).(io|com)$/.test(
-    window.location.host
-  );
-  archive()
-  {
+  Archive(){
     this.router.navigateByUrl('dashboard/archivenote')
   }
-  trash()
-  {
-    this.router.navigateByUrl('dashboard/trashnote')
+  Trash(){
+    this.router.navigateByUrl('dashboard/trashnote') 
   }
-  Logout(){
-    localStorage.removeItem('token');
-    this.router.navigateByUrl('/signin')
+ 
+  logout() {    
+    localStorage.removeItem('token')
+    this.router.navigateByUrl('login');
   }
+  search(event:any){
+    console.log( event.target.value);
+    this.dataService.sendData(event.target.value)
 
+  }
 
 }

@@ -7,37 +7,24 @@ import { NotesService } from 'src/app/services/notes/notes.service';
   styleUrls: ['./archivenote.component.scss']
 })
 export class ArchivenoteComponent implements OnInit {
-  notes:any;
-notesarchive:any
+  notesarchive:any
+  constructor(private notesService:NotesService) { }
 
-  constructor(private NotesService:NotesService) { }
-
-  
-
-  ngOnInit() {
+  ngOnInit(): void {
     this.GetAllArchiveNotes()
   }
-  getArchiveNotes(){
-   
-    
-}
-GetAllArchiveNotes(){
-  this.NotesService.getarchivenotes().subscribe((Response:any)=>{
-    this.notesarchive=Response.data.data;
-    console.log(this.notesarchive);
-    })
-  }
-  
-  // ngOnInit(): void {
-  // }
-  getAllNotes() {
-  
-    this. NotesService.getAllNotes().subscribe((res:any)=>{
-      
-      console.log(res);
-     this.notes=res
+  GetAllArchiveNotes(){
+    this.notesService.getarchivenotes().subscribe((Response:any)=>{
+      this.notesarchive=Response.data.data;
+      console.log(this.notesarchive);
+      })
      
-    })
-  }
+      
+    
+  
+}
+unarchive(e:any){
+  this.GetAllArchiveNotes();
+}
 
 }

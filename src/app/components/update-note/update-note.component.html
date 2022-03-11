@@ -1,15 +1,30 @@
-<div>
-    <mat-card-title fxLayout="row" style="font-size: 22px; width: 600px; height: auto;">
-        <input matInput type="text" [(ngModel)]="title" />
-        <mat-icon matTooltip="Pin note" style="float: right;">push_pin</mat-icon>
-    </mat-card-title>
+<div mat-dialog-content style="height: 150px;">
+  
+    
+    <div fxLayout="row" fxLayoutAlign="start center">
+    <div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+        <input type="notes"  [(ngModel)]="title"  class="textin1" placeholder="Title...">
+    </div>
+    <div>
+        <button type="button" class="icons" mat-button style="opacity: 60%;">
+            <img class="img" src="../../../assets/outline_push_pin_black_24dp.png.crdownload" width="25px" height="25px" />
+        </button>  
+    </div>
+    </div>
+    <div>
+        <textarea matInput class="text1" [(ngModel)]="description" placeholder="Take a note..." cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="40"></textarea>   
+    </div>        
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+         <div>
+             <app-noteicons></app-noteicons>
+         </div>
+            
+        </div>
+   
 
-    <mat-card-subtitle style="font-size: 1rem; padding-top: 3%; padding-bottom: 10%;">
-        <input matInput type="text" [(ngModel)]="description" />
-    </mat-card-subtitle>
+</div>
+<div mat-dialog-actions>
 
-    <mat-card-content fxlayout="row" fxLayoutAlign="space-between center" fxLayout.xs="row">
-        <app-noteicons></app-noteicons>
-        <button mat-stroked-button (click)="Update()">close</button>
-    </mat-card-content>
+<a class="link" mat-button (click)="close()" >Close</a>
 </div>

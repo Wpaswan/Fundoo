@@ -1,32 +1,11 @@
-.notes{
-  
-    margin-top: 53px;
-    border: 1px solid rgb(228, 223, 223);
-    width: 310px;
-    height: 140px;
-    border-radius: 10px;
-    padding-left: -10px;
-    
-    
-}
-.main{
-    display: flex;
-    flex-wrap: wrap;
-    grid-column-gap: 15px;
-   
-}
-.pinbutton{
-    border: none;  
-    background-color: white;
-    cursor: pointer;
-    background-color: transparent;
-
-    
-  
-  }
-  .style{
-    padding-top: 100px;
-    padding-left: 100px;
-}
+.icons{
+    visibility: hidden;
+    }
+    .card:hover .icons{
+        visibility: visible;
+    }
+    .card:hover{
+        box-shadow: black 1px 4px 10px;
+    }
 
 

@@ -33,19 +33,11 @@ import { AuthgaurdService } from './services/authgaurd.service';
 import {MatDialogModule} from '@angular/material/dialog';
 import { TrashnoteComponent } from './components/trashnote/trashnote.component';
 import { ArchivenoteComponent } from './components/archivenote/archivenote.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';  // used for reminder pick date and time 
+import {MatNativeDateModule} from '@angular/material/core';
+import { ReminderComponent } from './components/reminder/reminder.component';
 
-
-
-
-
-
-
-
-
-
-
-
-
+import { SearchfilterPipe } from './pipe/search-pipe/searchfilter.pipe'  ;       // used for reminder pick date and time 
 
 
 
@@ -67,6 +59,9 @@ import { ArchivenoteComponent } from './components/archivenote/archivenote.compo
     UpdateNoteComponent,
     TrashnoteComponent,
     ArchivenoteComponent,
+    ReminderComponent,
+  
+    SearchfilterPipe
     
     
     
@@ -96,6 +91,8 @@ import { ArchivenoteComponent } from './components/archivenote/archivenote.compo
     MatExpansionModule,
        MatMenuModule,
        MatDialogModule,
+       MatDatepickerModule,
+       MatNativeDateModule
        
        
     

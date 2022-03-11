@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NotesService } from 'src/app/services/notes/notes.service';
-import { DataService } from 'src/app/services/dataservice/data.service';
+import { ActivatedRoute } from '@angular/router';
+import { ArchivenoteComponent } from '../archivenote/archivenote.component';
+import { TrashnoteComponent } from '../trashnote/trashnote.component';
 
 @Component({
   selector: 'app-noteicons',
@@ -8,128 +10,119 @@ import { DataService } from 'src/app/services/dataservice/data.service';
   styleUrls: ['./noteicons.component.scss']
 })
 export class NoteiconsComponent implements OnInit {
-  @Output() changeColorOfNote = new EventEmitter<any>();  // this o/p decorator is coming from displaynotes.html
-  @Input() cardObject: any
-  token:any;
-  showIcons: boolean = true;
-  
-  colors = [
-    {
-      name: 'Red', bgColorValue: '#f28b82'
-    },  
-    // {
-    //   name: 'Pink', bgColorValue: '#FFEBCC'
-    // },
-    {
-      name: 'Yellow', bgColorValue: '#FFFEA9'
-    },
-    {
-      name: 'Light Green', bgColorValue: '#E4E978'
-    },
-    {
-      name: 'Lime', bgColorValue: '#B3E283'
-    },
-    {
-      name: 'Teal', bgColorValue: '#CDF0EA'
-    },
-    {
-      name: 'white', bgColorValue: '#ffffff'
-    }
-  ];
- 
-  
-  
-  constructor(private NotesService:NotesService,private dataservice:DataService) { }
+  @Input() iconnote:any;
+// @Output() changeColorOfNote = new EventEmitter<any>();
+// @Output() trashNoteToRefresh= new EventEmitter<any>();
+// @Output() archiveNoteToRefresh= new EventEmitter<any>();
+// @Output() unarchiveNoteToRefresh= new EventEmitter<any>();
+@Output() trashNoteToRefresh= new EventEmitter<any>();
+@Output() archiveNoteToRefresh= new EventEmitter<any>();
 
-  ngOnInit()
-   {
-    
-     
+@Output() changeColorOfNote = new EventEmitter<any>();
+
+isArchiveNotesComponent=false;
+isTrashNotesComponent=false;
+  constructor(private notesService: NotesService, private router:ActivatedRoute) { }
+ 
+
+  ngOnInit(): void {
+    console.log(this.iconnote)
+    let Component = this.router.snapshot.component;
+    if (Component == ArchivenoteComponent) {
+      this.isArchiveNotesComponent = true;
+      console.log(this.isArchiveNotesComponent);
+    }
+    if (Component == TrashnoteComponent) {
+      this.isTrashNotesComponent = true;
+      console.log(this.isTrashNotesComponent);
+    }
   }
-  trashNotes() {
+  deletenote(){
     let reqdata = {
-      noteIdList: [this.cardObject.id],
+      noteIdList: [this.iconnote.id],
       isDeleted: true,
     }
-    this.NotesService.trashNotes(reqdata).subscribe((response: any) => {
+    this.notesService.delete(reqdata).subscribe((response: any) => {
       console.log(response);
+      this.trashNoteToRefresh.emit(Response)
+
+    })
+    
+  }
+  restorenote(){
+    let reqdata = {
+      noteIdList: [this.iconnote.id],
+      isDeleted: false,
+    }
+    this.notesService.delete(reqdata).subscribe((response: any) => {
+      console.log(response);
+      this.changeColorOfNote.emit("Note is Restored");
     })
   
   }
-  archiveNote(){
+  deleteforever(){
     let reqdata = {
-      noteIdList: [this.cardObject.id],
+      noteIdList: [this.iconnote.id],
+      isDeleted: true,
+    }
+    this.notesService.deleteperm(reqdata).subscribe((response: any) => {
+      console.log(response);
+      this.changeColorOfNote.emit(response)
+    })
+  
+  }
+  archivenote(){
+    let reqdata = {
+      noteIdList: [this.iconnote.id],
       isArchived: true,
     }
-    this.NotesService.archiveNotes(reqdata).subscribe((response: any) => {
+    this.notesService.archive(reqdata).subscribe((response: any) => {
       console.log(response);
+      this.archiveNoteToRefresh.emit(Response)
     })
     
   }
+  colors = [{bgColorValue:'#fff'},
+  {bgColorValue:'#f28b82'},
+  {bgColorValue:'#fbbc04'},
+  {bgColorValue:'#fff475'},
+  {bgColorValue:'#ccff90'},
+  {bgColorValue:'#a7ffeb'},
+  {bgColorValue:'#cbf0f8'},
+  {bgColorValue:'#aecbfa'},
+  {bgColorValue:'#d7aefb'},
+  {bgColorValue:'#fdcfe8'},
+  {bgColorValue:'#e6c9a8'},
+  {bgColorValue:'#e8eaed'}
+  ];
   changeColor(noteColor:any){
     
-    this.cardObject.noteColor= noteColor;
+    this.iconnote.noteColor= noteColor;
     let reqdata={
       
-      noteIdList: [this.cardObject .id],  
+      noteIdList: [this.iconnote .id],  
       color: noteColor
     }
 
-    this.NotesService.usercolor(reqdata).subscribe((response:any) =>{
+    this.notesService.usercolor(reqdata).subscribe((response:any) =>{
       console.log(response);
 
       this.changeColorOfNote.emit(noteColor)
       
 
     })
-    window.location.reload();
+   
   }
-  reminder(){
-    let reqdata= {
-      
-      noteIdList: [this.cardObject.id],  //this notecard is coming from display.html - <app-icons & this noteIdlist is taken as a assumption by ourselves for taking id of notes
-      reminder: "string",  // it is coming from backend 
+  unarchivenote(){
+    let reqdata = {
+      noteIdList: [this.iconnote.id],
+      isArchived: false,
     }
-    this.NotesService.useraddreminder(reqdata).subscribe((response:any) =>{
-      console.log("reminder is added");
-      
-      console.log(response)
-
-      
+    this.notesService.archive(reqdata).subscribe((response: any) => {
+      console.log(response);
+      this.changeColorOfNote.emit("Note is unarchived");
     })
-    window.location.reload();
-  }
-  deletePermanently(){
     
-    let reqdata= {
-      
-      noteIdList: [this.cardObject.id],  //this notecard is coming from display.html - <app-icons & this noteIdlist is taken as a assumption by ourselves for taking id of notes
-      isDeleted: true,  // it is coming from backend 
-    }
-    this.NotesService.userpermanentdelete(reqdata).subscribe((response:any) =>{
-      console.log("Note is deleted permanently");
-      
-      console.log(response)
-
-      this.dataservice.sendData(response)  // this is coming from data service.ts used for unrelated data sharing as our icons.ts and getall notes dont have any relationship
-    })
-    window.location.reload();
-  }
-  restorenote(){
-    let reqdata= {
-      
-      noteIdList: [this.cardObject.id],  //this notecard is coming from display.html - <app-icons & this noteIdlist is taken as a assumption by ourselves for taking id of notes
-      isDeleted: false,  // it is coming from backend 
-    }
-    this.NotesService.trashNotes(reqdata).subscribe((response:any) =>{
-      console.log("Note is restored");
-      
-      console.log(response)
-
-      this.dataservice.sendData(response)  // this is coming from data service.ts used for unrelated data sharing as our icons.ts and getall notes dont have any relationship
-    })
-    // window.location.reload();
   }
 
 }
-
